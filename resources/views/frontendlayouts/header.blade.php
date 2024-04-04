@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Start Logo -->
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="" alt="Packline Systems Logo"></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('img/PacklineLogo.png') }}" alt="Packline Systems Logo"></a>
                         </div>
                         <!-- End Logo -->
                         <!-- Mobile Nav -->
@@ -28,7 +28,7 @@
                                     {{-- <li><a href="#">Services </a></li> --}}
                                     <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="">Order Goods</a></li>
+                                            <li><a href="{{ url('/goods') }}">Order Goods</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Help Center <i class="icofont-rounded-down"></i></a>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
-                            <a href="" class="btn">Contact Us</a>
+                            <a href="{{ url('/goods') }}" class="btn">Browse Products</a>
                         </div>
                     </div>
                 </div>

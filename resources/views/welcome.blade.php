@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>We Provide Services That You Can <span>Trust!</span></h1>
+                                <h1 class="text-white">We Provide Services That You Can <span>Trust!</span></h1>
                                 <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
                                     nisl pellentesque, faucibus libero eu, gravida quam. </p>
                                 <div class="button">
@@ -42,12 +42,12 @@
             </div>
             <!-- Start End Slider -->
             <!-- Start Single Slider -->
-            <div class="single-slider opacity-50" style="background-image:url('img/slider_main1.png')">
+            <div class="single-slider opacity-50" style="background-image:url('img/slider_main3.png')">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>We Provide Services That You Can <span>Trust!</span></h1>
+                                <h1 class="text-white">We Provide Services That You Can <span>Trust!</span></h1>
                                 <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
                                     nisl pellentesque, faucibus libero eu, gravida quam. </p>
                                 <div class="button">
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                             <!--/ End Video Animation -->
-                            <a href="https://www.youtube.com/watch?v=RFVXy6CRVR4" class="video video-popup mfp-iframe"><i
+                            <a href="https://www.youtube.com/watch?v=CmevPryAlJY" class="video video-popup mfp-iframe"><i
                                     class="fa fa-play"></i></a>
                         </div>
                     </div>

@@ -26,6 +26,18 @@ Route::get('/about_us', function () {
 
 });
 
+Route::get('/goods', function (){
+    return view('goods');
+});
+
+Route::get('/dashboard', function (){
+    return view('dashboard');
+});
+
+Route::get('/manage_goods', function(){
+    return view('dashboardlayouts.manage_good');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
