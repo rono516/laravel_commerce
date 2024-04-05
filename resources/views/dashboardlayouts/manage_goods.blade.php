@@ -11,27 +11,27 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="Product Name">
+                                    <input name="name" required type="text" placeholder="Product Name">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="location" type="text" placeholder="Product Location">
+                                    <input name="location" required type="text" placeholder="Product Location">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="quantity" type="text" placeholder="Product Quantity">
+                                    <input name="quantity" required type="text" placeholder="Product Quantity">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="price" type="number" placeholder="Price">
+                                    <input name="price" required type="number" placeholder="Price">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <select class="form-control" id="category_id" name="category_id">
+                                    <select class="form-control" id="category_id" required name="category_id">
                                         <option value="" selected disabled>Select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -41,12 +41,12 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
                                 <div class="form-group">
-                                    <textarea name="description" placeholder="Product description here....."></textarea>
+                                    <textarea required name="description" placeholder="Product description here....."></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-4 col-md-12 col-12">
                                 <div class="">
-                                    <input name="image" id="image" type="file">
+                                    <input required name="image" id="image" type="file">
                                 </div>
                             </div>
                         </div>
@@ -73,8 +73,9 @@
                             <div class="row">
                                 <div class="col-lg-5 col-md-4 col-12">
                                     <div class="">
-                                        <div class="button">
-                                            <button onclick="toggleProductForm()" class="btn">New Product</button>
+                                        <div class="">
+                                            <button onclick="toggleProductForm()" type="button" class="bg-red-400 p-2">New
+                                                Product</button>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +114,12 @@
                                                 <td class="w-10 text-center">
                                                     <div class="d-flex flex-row">
                                                         <div class="pr-4">
-                                                            <a href="#"><i class="icofont-trash"></i></a>
+                                                            <form id=deleteForm method="POST"
+                                                                action="{{ route('products.delete', $product) }}">
+                                                                @csrf
+                                                                <button onclick="confirmDelete()" type="submit"><i
+                                                                        class="icofont-trash"></i></button>
+                                                            </form>
                                                         </div>
                                                         <div>
                                                             <a href="#"><i class="icofont-edit"></i></a>
@@ -144,5 +150,14 @@
             var productForm = document.querySelector('.new-product-form');
             productForm.classList.toggle('d-none');
         }
+
+        function confirmDelete() {
+            if (confirm("Are you sure you want to delete this Product?")) {
+                document.getElementById('deleteForm').submit();
+            }
+        }
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
     </script>
 @endsection
