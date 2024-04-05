@@ -12,9 +12,9 @@
                     <div class="single-widget category">
                         <ul class="categor-list">
                             <li><a href="{{ url('/manage_goods') }}">Manage Products</a></li>
-                            <li><a href="#">Manage Users</a></li>
-                            <li><a href="#">Manage Tracks</a></li>
-                            <li><a href="#">Manage Orders</a></li>
+                            <li><a href="{{ url('/manage_users') }}">Manage Users</a></li>
+                            <li><a href="{{ url('/manage_trucks') }}">Manage Trucks</a></li>
+                            <li><a href="{{ url('/manage_orders') }}">Manage Orders</a></li>
 
                         </ul>
                     </div>

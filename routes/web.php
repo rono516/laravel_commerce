@@ -35,8 +35,23 @@ Route::get('/dashboard', function (){
 });
 
 Route::get('/manage_goods', function(){
-    return view('dashboardlayouts.manage_good');
+    return view('dashboardlayouts.manage_goods');
 });
+
+Route::get('/manage_users', function (){
+    return view('dashboardlayouts.manage_users');
+});
+Route::get('/manage_trucks', function (){
+return view('dashboardlayouts.manage_trucks');
+});
+
+Route::get('/manage_orders', function(){
+    return view('dashboardlayouts.manage_orders');
+});
+
+// <li><a href="{{ url('/manage_users') }}">Manage Users</a></li>
+//                             <li><a href="{{ url('manage_trucks') }}">Manage Trucks</a></li>
+//                             <li><a href="{{ url('/manage_orders') }}">Manage Orders</a></li>
 
 Auth::routes();
 
