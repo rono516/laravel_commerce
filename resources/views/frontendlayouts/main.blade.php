@@ -119,5 +119,7 @@
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<!-- Main JS -->
 		<script src="{{ asset('js/main.js') }}"></script>
+
+		@yield('javascript')
     </body>
 </html>
