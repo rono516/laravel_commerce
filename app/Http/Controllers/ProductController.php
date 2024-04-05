@@ -44,7 +44,6 @@ class ProductController extends Controller
             "image_url" => "uploads/" . $filename,
         ]);
 
-
         return redirect()->back();
 
     }
@@ -54,8 +53,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $related_products = Product::where('category_id', $product->category_id)
+            ->where('id', "!=", $product->id)
+            ->limit(3)
+            ->get();
         return view('single_product')->with([
-            'product' => $product
+            'product' => $product,
+            'related_products' => $related_products
         ]);
     }
 

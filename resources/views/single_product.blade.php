@@ -29,22 +29,46 @@
                     <!-- Start Choose Left -->
                     <div class="choose-left">
                         <h3>{{ $product->name }}</h3>
+                        <p>Ksh. {{ $product->price }}</p>
                         <p>{{ $product->description }}</p>
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul class="list">
-                                    <li><i class="fa fa-minus"></i>Quantity: {{ $product->quantity }} </li>
+                                    <li><i class="fa fa-earth-americas"></i>Total Quantity: {{ $product->quantity }} </li>
 
 
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul class="list">
-                                    <li><i class="fa fa-earth-americas"></i>Location: {{ $product->location }}</li>
+                                    <li><i class="fa fa-earth-americas" style="color: #000000;"></i>Location:
+                                        {{ $product->location }}</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="mt-5">
+                        {{-- <div class="d-flex flex-row align-items-center"> --}}
+                        <div class="row mt-3">
+                            <div class="col-lg-6">
+                                <form action="">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-control" data-action="decrement">-</button>
+                                    </span>
+                                    <input class="w-100" value="1" readonly required id="quantity_input"
+                                        min="0" max="{{ $product->quantity }}" type="number"
+                                        placeholder="Order quantity">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-control" data-action="increment">+</button>
+                                    </span>
+                                </form>
+                            </div>
+                            <div class="col-lg-6">
+                                Total amount: <span id="total_amount"></span>
+                            </div>
+                        </div>
+                        {{-- </div> --}}
+
+
+                        <div class="mt-4">
                             <button class="btn ">Order Now</button>
                         </div>
                     </div>
@@ -55,4 +79,47 @@
         </div>
     </section>
     <!--/ End Why choose -->
+@endsection
+
+@section('javascript')
+    <script>
+        // quantity_input = document.getElementById('quantity_input').value;
+        // product_price = {{ $product->price }}
+        // total_amount = quantity_input * product_price
+
+        // total_amount_html = document.getElementById('total_amount').innerHTML = total_amount;
+        let quantityInput = document.getElementById('quantity_input');
+        let totalAmountSpan = document.getElementById('total_amount');
+        let productPrice = {{ $product->price }};
+        let maxQuantity = {{ $product->quantity }};
+
+        function updateTotalAmount() {
+            let quantity = parseInt(quantityInput.value);
+            let totalAmount = quantity * productPrice;
+            totalAmountSpan.textContent = totalAmount;
+        }
+
+        quantityInput.addEventListener('input', updateTotalAmount);
+
+        // Handle increment and decrement buttons
+        document.querySelectorAll('.quantity-control').forEach(button => {
+            button.addEventListener('click', function() {
+                let action = this.getAttribute('data-action');
+                let currentValue = parseInt(quantityInput.value);
+                let newValue;
+
+                if (action === 'increment') {
+                    newValue = currentValue + 1;
+                    newValue = newValue <= maxQuantity ? newValue : maxQuantity; // Ensure the new value does not exceed the maximum
+                } else if (action === 'decrement') {
+                    newValue = currentValue - 1 >= 0 ? currentValue - 1 : 0;
+                }
+
+                quantityInput.value = newValue;
+                updateTotalAmount(); // Update total amount
+            });
+        });
+        // Call the function initially to display the default total amount
+        updateTotalAmount();
+    </script>
 @endsection
