@@ -28,32 +28,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'quantity' => 'required|numeric',
-            'category_id' => 'required|numeric', // Adjust this according to your form
-            'description' => 'required|string',
-            'image' => 'required|file',
-        ]);
+
         $uploadedFile = $request->file('image');
-        $filename = time().$uploadedFile->getClientOriginalName();
+        $filename = time() . $uploadedFile->getClientOriginalName();
         $request->file('image')->storeAs("public/uploads", $filename);
 
-        $product = new Product();
-        $product->name = $validatedData['name'];
-        $product->location = $validatedData['location'];
-        $product->price = $validatedData['price'];
-        $product->quantity = $validatedData['quantity'];
-        $product->category_id = $validatedData['category_id'];
-        $product->description = $validatedData['description'];
-        $product->image_url = "uploads/".$filename;
-        $product->save();
+        Product::create([
+            'name' => $request->input('name'),
+            "location" => $request->input('location'),
+            "price" => $request->input('price'),
+            "quantity" => $request->input('quantity'),
+            "category_id" => $request->input('category_id'),
+            "description" => $request->input('description'),
+            "image_url" => "uploads/" . $filename,
+        ]);
 
-        dd("Product Saved");
 
-        // return redirect()->back();
+        return redirect()->back();
 
     }
 

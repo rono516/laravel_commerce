@@ -6,7 +6,7 @@
         <div class="container pt-4">
             <div class="row">
                 <div class="col-lg-12 new-product-form d-none col-md-12 col-12">
-                    <form class="form" method="POST" action="{{ url('/products') }}" enctype="multipart/form-data">
+                    <form class="form" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
@@ -103,24 +103,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="px-4 py-3">Start</td>
-                                            <td class="px-4 py-3">5 Mb/s</td>
-                                            <td class="px-4 py-3">15 GB</td>
-                                            <td class="px-4 py-3 text-lg text-gray-900">Free</td>
-                                            <td class="w-10 text-center">
-                                                <div class="d-flex flex-row">
-                                                    <div class="pr-4">
-                                                        <a href="#"><i class="icofont-trash"></i></a>
-                                                    </div>
-                                                    <div>
-                                                        <a href="#"><i class="icofont-edit"></i></a>
-                                                    </div>
 
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td class="px-4 py-3">{{ $product->name }}</td>
+                                                <td class="px-4 py-3">{{ $product->price }}</td>
+                                                <td class="px-4 py-3">{{ $product->location }}</td>
+                                                <td class="px-4 py-3 text-lg text-gray-900">{{ $product->quantity }}</td>
+                                                <td class="w-10 text-center">
+                                                    <div class="d-flex flex-row">
+                                                        <div class="pr-4">
+                                                            <a href="#"><i class="icofont-trash"></i></a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#"><i class="icofont-edit"></i></a>
+                                                        </div>
 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
 
                                     </tbody>
