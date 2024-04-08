@@ -22,25 +22,18 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::post('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
-
 Route::get('/goods', [FrontendController::class, 'goods']);
 
-Route::get('/dashboard', function (){
+Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
 Route::get('/manage_goods', [DashboardController::class, 'manage_goods']);
+Route::get('/manage_users', [DashboardController::class, 'manage_users']);
+Route::get('/manage_users', [DashboardController::class, 'manage_users']);
+Route::get('/manage_trucks', [DashboardController::class, 'manage_trucks']);
+Route::get('/manage_orders', [DashboardController::class, 'manage_orders']);
 
-Route::get('/manage_users', function (){
-    return view('dashboardlayouts.manage_users');
-});
-Route::get('/manage_trucks', function (){
-return view('dashboardlayouts.manage_trucks');
-});
-
-Route::get('/manage_orders', function(){
-    return view('dashboardlayouts.manage_orders');
-});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

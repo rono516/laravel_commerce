@@ -50,15 +50,23 @@
                         <div class="row mt-3">
                             <div class="col-lg-6">
                                 <form action="">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="quantity-control" data-action="decrement">-</button>
-                                    </span>
-                                    <input class="w-100" value="1" readonly required id="quantity_input"
-                                        min="0" max="{{ $product->quantity }}" type="number"
-                                        placeholder="Order quantity">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="quantity-control" data-action="increment">+</button>
-                                    </span>
+                                    <div class="d-flex flex-row align-items-center w-100">
+                                        <div class="">
+                                            <span class="input-group-btn">
+                                                <button  type="button" class="quantity-control p-2 mr-2" data-action="decrement">-</button>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <input class="text-center mr-2" value="1" readonly required id="quantity_input"
+                                            min="0" max="{{ $product->quantity }}" type="number"
+                                            placeholder="Order quantity">
+                                        </div>
+                                        <div>
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-control p-2" data-action="increment">+</button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="col-lg-6">
@@ -79,6 +87,39 @@
         </div>
     </section>
     <!--/ End Why choose -->
+    <div class="container">
+        <h3>Related Products</h3>
+    </div>
+    <section class="blog section" id="blog">
+        <div class="container">
+
+            <div class="row">
+                @foreach ($related_products as $related_product)
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <a href="{{ route('products.show', $related_product) }}">
+                            <!-- Single Blog -->
+                            <div class="single-news">
+                                <div class="news-head">
+                                    <img src="{{ Storage::url($related_product->image_url) }}" alt="#">
+                                </div>
+                                <div class="news-body">
+                                    <div class="news-content">
+                                        {{-- <div class="date"><button class="date">22 Aug, 2020</button></div> --}}
+                                        <h2>{{ $related_product->name }}</h2>
+                                        <p>{{ $related_product->description }}</p>
+                                        <h3 class="text">Ksh. {{ $related_product->price }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- End Single Blog -->
+                    </div>
+                @endforeach
+
+
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('javascript')
