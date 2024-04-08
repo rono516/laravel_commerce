@@ -1,4 +1,4 @@
-<header class="header" >
+<header class="header">
     <!-- Header Inner -->
     <div class="header-inner">
         <div class="container">
@@ -7,7 +7,8 @@
                     <div class="col-lg-3 col-md-3 col-12">
                         <!-- Start Logo -->
                         <div class="logo">
-                            <a href="{{ url('/') }}"><img src="{{ asset('img/PacklineLogo.png') }}" alt="Packline Systems Logo"></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('img/PacklineLogo.png') }}"
+                                    alt="Packline Systems Logo"></a>
                         </div>
                         <!-- End Logo -->
                         <!-- Mobile Nav -->
@@ -37,13 +38,18 @@
                                             <li><a href="{{ url('/contact_us') }}">Contact Us</a></li>
                                         </ul>
                                     </li>
-                                   @guest
-                                   <li><a href="{{ route('login') }}">Login </a></li>
-                                   <li><a href="{{ route('register') }}">Register </a></li>
-                                   @endguest
-                                   @auth
-                                   <li><a href="{{ route('home') }}">Profile </a></li>
-                                   @endauth
+                                    @guest
+                                        <li><a href="{{ route('login') }}">Login </a></li>
+                                        <li><a href="{{ route('register') }}">Register </a></li>
+                                    @endguest
+                                    @auth
+                                        <li><a href="{{ route('home') }}">Profile </a></li>
+                                        <li><a href="{{ route('logout') }}">Logout </a></li>
+                                        @can('add products')
+                                            <li><a href="{{ url('/dashboard') }}">Dashboard </a></li>
+                                        @endcan
+
+                                    @endauth
                                 </ul>
                             </nav>
                         </div>

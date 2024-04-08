@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\DashboardController;
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +39,4 @@ Route::get('/manage_orders', [DashboardController::class, 'manage_orders']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -1,30 +1,44 @@
 @extends('frontendlayouts.main')
 
 @section('content')
-<!-- Single News -->
-<section class="news-single section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-12">
-                <div class="main-sidebar">
+    <!-- Single News -->
+    <section class="news-single section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="main-sidebar">
 
-                    <!-- Single Widget -->
-                    <div class="single-widget category">
-                        <ul class="categor-list">
-                            <li><a href="{{ url('/manage_goods') }}">Manage Products</a></li>
-                            <li><a href="{{ url('/manage_users') }}">Manage Users</a></li>
-                            <li><a href="{{ url('manage_trucks') }}">Manage Trucks</a></li>
-                            <li><a href="{{ url('/manage_orders') }}">Manage Orders</a></li>
+                        <!-- Single Widget -->
+                        <div class="single-widget category">
+                            <ul class="categor-list">
 
-                        </ul>
+
+                                @can('add products')
+                                    <li><a href="{{ url('/manage_goods') }}">Manage Products</a></li>
+                                @endcan
+                                @can('manage users')
+                                    <li><a href="{{ url('/manage_users') }}">Manage Users</a></li>
+                                @endcan
+                                @can('manage trucks')
+                                    <li><a href="{{ url('manage_trucks') }}">Manage Trucks</a></li>
+                                @endcan
+                                @can('manage orders')
+                                    <li><a href="{{ url('/manage_orders') }}">Manage Orders</a></li>
+                                @endcan
+
+
+
+
+
+                            </ul>
+                        </div>
+                        <!--/ End Single Widget -->
+
                     </div>
-                    <!--/ End Single Widget -->
-
                 </div>
-            </div>
-            <div class="col-lg-8 col-12">
-                @yield('goodsContent')
-                {{-- <div class="row">
+                <div class="col-lg-8 col-12">
+                    @yield('goodsContent')
+                    {{-- <div class="row">
                     <div class="col-12">
                         <div class="single-main">
                             <!-- News Head -->
@@ -88,10 +102,10 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
-<!--/ End Single News -->
+    </section>
+    <!--/ End Single News -->
 @endsection

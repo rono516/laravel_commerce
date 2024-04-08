@@ -30,5 +30,8 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Clothes'
         ]);
+        $this->call([
+            PermissionsSeeder::class,
+        ]);
     }
 }
