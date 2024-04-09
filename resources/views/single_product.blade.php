@@ -46,39 +46,41 @@
                                 </ul>
                             </div>
                         </div>
-                        {{-- <div class="d-flex flex-row align-items-center"> --}}
-                        <div class="row mt-3">
-                            <div class="col-lg-6">
-                                <form action="">
+                        <form action="{{ route('place.order',$product) }}">
+
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
                                     <div class="d-flex flex-row align-items-center w-100">
                                         <div class="">
                                             <span class="input-group-btn">
-                                                <button  type="button" class="quantity-control p-2 mr-2" data-action="decrement">-</button>
+                                                <button type="button" class="quantity-control p-2 mr-2"
+                                                    data-action="decrement">-</button>
                                             </span>
                                         </div>
                                         <div>
-                                            <input class="text-center mr-2" value="1" readonly required id="quantity_input"
-                                            min="0" max="{{ $product->quantity }}" type="number"
-                                            placeholder="Order quantity">
+                                            <input class="text-center mr-2" value="1" readonly required
+                                             name="quantity_input"   id="quantity_input" min="0" max="{{ $product->quantity }}"
+                                                type="number" placeholder="Order quantity">
                                         </div>
                                         <div>
                                             <span class="input-group-btn">
-                                                <button type="button" class="quantity-control p-2" data-action="increment">+</button>
+                                                <button type="button" class="quantity-control p-2"
+                                                    data-action="increment">+</button>
                                             </span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    Total amount: <span id="total_amount"></span>
+                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                Total amount: <span id="total_amount"></span>
-                            </div>
-                        </div>
-                        {{-- </div> --}}
+                            {{-- </div> --}}
 
 
-                        <div class="mt-4">
-                            <button class="btn ">Order Now</button>
-                        </div>
+                            <div class="mt-4">
+                                <button type="submit" class="btn ">Order Now</button>
+                            </div>
+                        </form>
                     </div>
                     <!-- End Choose Left -->
                 </div>
@@ -151,7 +153,8 @@
 
                 if (action === 'increment') {
                     newValue = currentValue + 1;
-                    newValue = newValue <= maxQuantity ? newValue : maxQuantity; // Ensure the new value does not exceed the maximum
+                    newValue = newValue <= maxQuantity ? newValue :
+                    maxQuantity; // Ensure the new value does not exceed the maximum
                 } else if (action === 'decrement') {
                     newValue = currentValue - 1 >= 0 ? currentValue - 1 : 0;
                 }

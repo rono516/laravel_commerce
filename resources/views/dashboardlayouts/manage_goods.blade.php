@@ -1,7 +1,6 @@
 @extends('dashboardlayouts.main')
 
 @section('goodsContent')
-    <!-- Start Add Product -->
     <section class="">
         <div class="container pt-4">
             <div class="row">

@@ -3,63 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public function place_order(Request $request, $id){
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $user_id = Auth::user()->id;
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+        $order = Order::where('user_id', $user_id)->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
+        if(!$order){
+            $order = new Order();
+            $order->user_id = Auth::user()->id;
+            $order->save();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Order $order)
-    {
-        //
+        $product = Product::find($id);
+        $quantity = $request->input('quantity_input');
+
+        // Check if the product is already in the order
+        $existingProduct = $order->products()->where('product_id', $product->id)->first();
+
+        // $order->products()->attach($product, ['quantity' => $quantity, 'user_id' => Auth::user()->id]);
+        // If the product is already in the order, update the quantity
+        if ($existingProduct) {
+            $existingQuantity = $existingProduct->pivot->quantity;
+            $order->products()->updateExistingPivot($product->id, ['quantity' => $existingQuantity + $quantity]);
+        } else {
+            // If the product is not in the order, attach it with the specified quantity
+            $order->products()->attach($product, ['quantity' => $quantity]);
+        }
+
+        // Response in success
+
+        // return response()->json(['message' => 'Product added to the order successfully']);
+        return redirect(route('home'));
     }
 }

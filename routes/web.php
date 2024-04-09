@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
+
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', function () {
@@ -36,6 +38,8 @@ Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_trucks', [DashboardController::class, 'manage_trucks']);
 Route::get('/manage_orders', [DashboardController::class, 'manage_orders']);
+
+Route::get('/order/{product}', [OrderController::class, 'place_order'])->name('place.order');
 
 Auth::routes();
 
