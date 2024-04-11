@@ -26,12 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $my_order = Order::where('user_id', Auth::user()->id);
-        $order_products = DB::table('order_product')->get();
+        $open_order = Order::where('user_id', Auth::user()->id)->where('placed', false)->first();
+        $order = Order::where('user_id', Auth::user()->id)->where('placed', false)->first();
+        $my_orders = Order::where('user_id', Auth::user()->id)->get();
+        $order_products = DB::table('order_product')->where('order_id', '=', $open_order->id)->get();
+        $sum_of_all_products = DB::table('order_product')->sum('quantity');
 
         // $users = DB::table('users')->get();
         return view('home')->with([
-            'order_products' => $order_products
+            'order_products' => $order_products,
+            'sum_of_all_products' => $sum_of_all_products,
+            'my_orders' => $my_orders,
+            'order' => $order
         ]);
     }
 }

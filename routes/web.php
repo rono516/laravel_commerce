@@ -40,6 +40,7 @@ Route::get('/manage_trucks', [DashboardController::class, 'manage_trucks']);
 Route::get('/manage_orders', [DashboardController::class, 'manage_orders']);
 
 Route::get('/order/{product}', [OrderController::class, 'place_order'])->name('place.order');
+Route::get('/confirm/{order}', [OrderController::class, 'confirm_order'])->name('confirm.order');
 
 Auth::routes();
 

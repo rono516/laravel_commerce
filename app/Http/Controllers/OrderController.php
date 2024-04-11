@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function place_order(Request $request, $id){
+    public function place_order(Request $request, $id)
+    {
 
         $user_id = Auth::user()->id;
 
+        $order = Order::where('user_id', $user_id)
+            ->where('placed', false)
+            ->first();
 
-        $order = Order::where('user_id', $user_id)->first();
-
-
-        if(!$order){
+        if (!$order) {
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->save();
@@ -43,5 +44,11 @@ class OrderController extends Controller
 
         // return response()->json(['message' => 'Product added to the order successfully']);
         return redirect(route('home'));
+    }
+
+    public function confirm_order(Order $order)
+    {
+        $order->update(['placed' => true]);
+        return redirect()->back();
     }
 }
