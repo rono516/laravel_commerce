@@ -234,16 +234,32 @@
                             </ul>
 
                             @if (empty($order->id))
-                                <a href="{{ url('/goods') }}" class="btn btn-primary mt-2">Browse Goods</a>
+                                <a href="{{ url('/goods') }}" class="btn btn-primary mt-2 text-white">Browse Goods</a>
                             @else
-                                <a href="{{ route('confirm.order', $order) }}" class="btn btn-primary mt-2">Confirm
-                                    Order</a>
+                                {{-- <a href="{{ route('confirm.order', $order) }}" class="btn btn-primary mt-2 text-white">Confirm
+                                    Order</a> --}}
+                                        <form class="form" method="POST" action="{{ route('confirm.order',$order) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="row  mt-2">
+                                                <div class="col-lg-12 col-md-12 col-12">
+                                                    <div class="form-group">
+                                                        <input name="delivery_location" id="delivery_location" required type="text" placeholder="Delivery Location...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit"  class="btn btn-primary ">Confirm Order</button>
+                                        </form>
+
                             @endif
-                            {{-- <button type="submit" onclick="{{ route('confirm.order',$open_order) }}" class="btn btn-primary mt-2">Confirm Order</button> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+
+@section('javascript')
+
 @endsection

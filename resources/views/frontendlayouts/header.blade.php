@@ -30,7 +30,7 @@
                                     <li><a href="#">Services <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="{{ url('/goods') }}">Order Goods</a></li>
-                                            <li><a href="#">Manage Orders</a></li>
+                                            <li><a href="{{ route('home') }}">Manage Orders</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Help Center <i class="icofont-rounded-down"></i></a>

@@ -46,9 +46,10 @@ class OrderController extends Controller
         return redirect(route('home'));
     }
 
-    public function confirm_order(Order $order)
+    public function confirm_order(Request $request, Order $order)
     {
-        $order->update(['placed' => true]);
+        $order->update(['placed' => true, 'delivery_location' => $request->input('delivery_location')]);
         return redirect()->back();
+
     }
 }

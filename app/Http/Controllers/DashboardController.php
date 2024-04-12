@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Truck;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -27,17 +29,36 @@ class DashboardController extends Controller
         ]);
     }
     public function manage_trucks(){
-        $users = User::all();
+        $trucks = Truck::all();
 
         return view('dashboardlayouts.manage_trucks')->with([
-            'users' => $users
+            'trucks' => $trucks
         ]);
     }
     public function manage_orders(){
-        $users = User::all();
+        $orders = Order::all()->where('placed',"=", true);
+
 
         return view('dashboardlayouts.manage_orders')->with([
-            'users' => $users
+            'orders' => $orders
         ]);
+    }
+    public function truck_store(Request $request){
+
+
+
+        $longitude  = $request->input('longitude');
+        $latitude = $request->input('latitude');
+        $location = ['latitude' => $latitude, 'longitude' => $longitude];
+
+        Truck::create([
+            'location' => $location,
+            'registration' => $request->input('registration'),
+            'driver_name' => $request->input('driver_name'),
+        ]);
+
+        return redirect()->back();
+
+
     }
 }

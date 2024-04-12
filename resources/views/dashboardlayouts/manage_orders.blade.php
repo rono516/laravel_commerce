@@ -1,12 +1,11 @@
 @extends('dashboardlayouts.main')
 
 @section('goodsContent')
-    <!-- Start Add Product -->
     <section class="">
         <div class="container pt-4">
             <div class="row">
                 <div class="col-lg-12 new-product-form d-none col-md-12 col-12">
-                    <form class="form" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+                    <form class="form" method="POST" action="#" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
@@ -70,28 +69,30 @@
                                                 Ordering Trader</th>
                                             <th
                                                 class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                                Delivery Location</th>
-                                            {{-- <th
+                                                Confimed</th>
+                                            <th
                                                 class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                                                Quantity</th> --}}
+                                                Delivery Location</th>
+
                                             <th
                                                 class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                                 Action</th>
-                                            {{-- <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
 
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td class="px-4 py-3">6HTK</td>
-                                                <td class="px-4 py-3">Trader Name</td>
-                                                <td class="px-4 py-3">Border Kenya</td>
-                                                {{-- <td class="px-4 py-3 text-lg text-gray-900">{{ $product->quantity }}</td> --}}
+                                                <td class="px-4 py-3">{{ $order->id }}</td>
+                                                <td class="px-4 py-3">{{ $order->user->name }}</td>
+                                                <td class="px-4 py-3">{{ $order->placed ? 'Yes' : 'Not Confirmed' }}</td>
+                                                <td class="px-4 py-3">
+                                                    {{ $order->delivery_location ? $order->delivery_location : 'Not Set' }}
+                                                </td>
                                                 <td class="w-10 text-center">
                                                     <div class="d-flex flex-row">
                                                         <div class="pr-4">
-                                                            <form id=deleteForm method="POST"
-                                                                action="">
+                                                            <form id=deleteForm method="POST" action="">
                                                                 @csrf
                                                                 <button onclick="confirmDelete()" type="submit"><i
                                                                         class="icofont-trash"></i></button>
@@ -104,7 +105,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                        @endforeach
 
                                     </tbody>
                                 </table>

@@ -25,6 +25,7 @@ Route::get('/about_us', function () {
 
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+
 Route::post('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
 Route::get('/goods', [FrontendController::class, 'goods']);
@@ -37,10 +38,11 @@ Route::get('/manage_goods', [DashboardController::class, 'manage_goods']);
 Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_trucks', [DashboardController::class, 'manage_trucks']);
+Route::post('/trucks', [DashboardController::class, 'truck_store'])->name('trucks.store');
 Route::get('/manage_orders', [DashboardController::class, 'manage_orders']);
 
 Route::get('/order/{product}', [OrderController::class, 'place_order'])->name('place.order');
-Route::get('/confirm/{order}', [OrderController::class, 'confirm_order'])->name('confirm.order');
+Route::post('/confirm/{order}', [OrderController::class, 'confirm_order'])->name('confirm.order');
 
 Auth::routes();
 

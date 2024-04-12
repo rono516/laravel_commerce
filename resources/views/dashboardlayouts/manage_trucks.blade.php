@@ -6,24 +6,36 @@
         <div class="container pt-4">
             <div class="row">
                 <div class="col-lg-12 new-product-form d-none col-md-12 col-12">
-                    <form class="form" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+
+                    {{-- protected $fillable = ['registration', 'location', 'driver_name']; --}}
+                    <form class="form" method="POST" action="{{ route('trucks.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="vehicle_reg" required type="text" placeholder="Vehicle Registration">
+                                    <input name="registration" id="registration" required type="text"
+                                        placeholder="Vehicle Registration">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="driver_name" required type="text" placeholder="Driver Name">
+                                    <input name="driver_name" id="driver_name" required type="text"
+                                        placeholder="Driver Name">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="vehicle_location" required type="text" placeholder="Vehicle Current Location">
+                                    <input name="latitude" required type="number" placeholder="Vehicle Latitude Location">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <input name="longitude" required type="number"
+                                        placeholder="Vehicle Longitude Location">
                                 </div>
                             </div>
                         </div>
@@ -82,16 +94,16 @@
                                     </thead>
                                     <tbody>
 
+                                        @foreach ($trucks as $truck)
                                             <tr>
-                                                <td class="px-4 py-3">KAK 206 N</td>
-                                                <td class="px-4 py-3">Driver Name</td>
-                                                <td class="px-4 py-3">Border Kenya</td>
+                                                <td class="px-4 py-3">{{ $truck->registration }}</td>
+                                                <td class="px-4 py-3">{{ $truck->driver_name }}</td>
+                                                <td class="px-4 py-3">Lat: {{ $truck->location['latitude']}}, Long: {{ $truck->location['longitude']  }}</td>
                                                 {{-- <td class="px-4 py-3 text-lg text-gray-900">{{ $product->quantity }}</td> --}}
                                                 <td class="w-10 text-center">
                                                     <div class="d-flex flex-row">
                                                         <div class="pr-4">
-                                                            <form id=deleteForm method="POST"
-                                                                action="">
+                                                            <form id=deleteForm method="POST" action="">
                                                                 @csrf
                                                                 <button onclick="confirmDelete()" type="submit"><i
                                                                         class="icofont-trash"></i></button>
@@ -104,7 +116,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                        @endforeach
 
                                     </tbody>
                                 </table>
