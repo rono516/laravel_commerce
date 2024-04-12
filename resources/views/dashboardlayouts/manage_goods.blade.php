@@ -121,7 +121,7 @@
                                                             </form>
                                                         </div>
                                                         <div>
-                                                            <a href="#"><i class="icofont-edit"></i></a>
+                                                            <a href="{{ route('good.edit', $product) }}"><i class="icofont-edit"></i></a>
                                                         </div>
 
                                                     </div>

@@ -10,8 +10,8 @@
                         <div class="col-lg-7">
                             <div class="text">
                                 <h1>We Provide Services That You Can <span>Trust!</span></h1>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
-                                    nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                                <p class="text-white">At the forefront is your satisfaction. Order goods with us at
+                                    affordable prices, best delivery rates while monitoring your orders </p>
                                 <div class="button">
                                     <a href="#" class="btn">Browse Services</a>
                                     <a href="#" class="btn primary">Contact Us</a>
@@ -23,14 +23,14 @@
             </div>
             <!-- End Single Slider -->
             <!-- Start Single Slider -->
-            <div class="single-slider opacity-50" style="background-image:url('img/slider_main2.png')">
+            {{-- <div class="single-slider opacity-50" style="background-image:url('img/slider_main2.png')">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
                                 <h1 class="text-white">We Provide Services That You Can <span>Trust!</span></h1>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
-                                    nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                                <p class="text-white">At the forefront is your satisfaction. Order goods with us at
+                                    affordable prices, best delivery rates while monitoring your orders </p>
                                 <div class="button">
                                     <a href="#" class="btn">Browse Services</a>
                                     <a href="#" class="btn primary">Contact Us</a>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Start End Slider -->
             <!-- Start Single Slider -->
             <div class="single-slider opacity-50" style="background-image:url('img/slider_main3.png')">
@@ -48,8 +48,8 @@
                         <div class="col-lg-7">
                             <div class="text">
                                 <h1 class="text-white">We Provide Services That You Can <span>Trust!</span></h1>
-                                <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed
-                                    nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                                <p class="text-white">At the forefront is your satisfaction. Order goods with us at
+                                    affordable prices, best delivery rates while monitoring your orders </p>
                                 <div class="button">
                                     <a href="#" class="btn">Browse Services</a>
                                     <a href="#" class="btn primary">Conatct Us</a>
@@ -148,7 +148,7 @@
                     <div class="section-title">
                         <h2>We Offer Different Services To Ease Your Experience</h2>
                         <img src="img/section-img.png" alt="#">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                        <p>Join our list of satisfied customers today</p>
                     </div>
                 </div>
             </div>
@@ -157,22 +157,22 @@
                     <!-- Start Choose Left -->
                     <div class="choose-left">
                         <h3>Who We Are</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est
-                            lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
-                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+                        <p>We aim to make your products ordering easier. We will be in charge of packaging and transiting
+                            your products while you wait and watch us work.</p>
+                        <p>We provide you a platform to:</p>
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul class="list">
-                                    <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
-                                    <li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
-                                    <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
+                                    <li><i class="fa fa-caret-right"></i>Access Products </li>
+                                    <li><i class="fa fa-caret-right"></i>Order Products</li>
+                                    <li><i class="fa fa-caret-right"></i>Monitor Orders</li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul class="list">
-                                    <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
-                                    <li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
-                                    <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
+                                    <li><i class="fa fa-caret-right"></i>Add Your Products for Sale </li>
+                                    <li><i class="fa fa-caret-right"></i>Monitor Sales</li>
+                                    <li><i class="fa fa-caret-right"></i>Monitor your Customers</li>
                                 </ul>
                             </div>
                         </div>
@@ -276,7 +276,7 @@
                     <!-- Start Newsletter Form -->
                     <div class="subscribe-text ">
                         <h6>Sign up for newsletter</h6>
-                        <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.
+                        <p class="">Receive offers and deals straight to your email<br> Subscribe Now.
                         </p>
                     </div>
                     <!-- End Newsletter Form -->

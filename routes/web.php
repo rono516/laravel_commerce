@@ -25,6 +25,7 @@ Route::get('/about_us', function () {
 
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::put('/products/update', [ProductController::class, 'update'])->name('products.update');
 
 Route::post('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
@@ -35,6 +36,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/manage_goods', [DashboardController::class, 'manage_goods']);
+Route::get('/edit_good/{product}', [DashboardController::class, 'edit_good'])->name('good.edit');
 Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_users', [DashboardController::class, 'manage_users']);
 Route::get('/manage_trucks', [DashboardController::class, 'manage_trucks']);

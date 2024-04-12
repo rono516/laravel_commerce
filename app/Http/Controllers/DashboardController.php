@@ -2,52 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Truck;
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Truck;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function manage_goods(){
+    public function manage_goods()
+    {
         $categories = Category::all();
 
         $products = Product::all();
 
         return view('dashboardlayouts.manage_goods')->with([
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
         ]);
     }
-    public function manage_users(){
+    public function edit_good(Product $product)
+    {
+        $categories = Category::all();
+
+        return view('dashboardlayouts.edit_good')-> with([
+            'categories' => $categories,
+            'product' => $product
+        ]);
+    }
+    public function manage_users()
+    {
         $users = User::all();
 
         return view('dashboardlayouts.manage_users')->with([
-            'users' => $users
+            'users' => $users,
         ]);
     }
-    public function manage_trucks(){
+    public function manage_trucks()
+    {
         $trucks = Truck::all();
 
         return view('dashboardlayouts.manage_trucks')->with([
-            'trucks' => $trucks
+            'trucks' => $trucks,
         ]);
     }
-    public function manage_orders(){
-        $orders = Order::all()->where('placed',"=", true);
-
+    public function manage_orders()
+    {
+        $orders = Order::all()->where('placed', "=", true);
 
         return view('dashboardlayouts.manage_orders')->with([
-            'orders' => $orders
+            'orders' => $orders,
         ]);
     }
-    public function truck_store(Request $request){
+    public function truck_store(Request $request)
+    {
 
-
-
-        $longitude  = $request->input('longitude');
+        $longitude = $request->input('longitude');
         $latitude = $request->input('latitude');
         $location = ['latitude' => $latitude, 'longitude' => $longitude];
 
@@ -58,7 +69,6 @@ class DashboardController extends Controller
         ]);
 
         return redirect()->back();
-
 
     }
 }

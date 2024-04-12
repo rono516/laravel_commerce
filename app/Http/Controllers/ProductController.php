@@ -59,7 +59,7 @@ class ProductController extends Controller
             ->get();
         return view('single_product')->with([
             'product' => $product,
-            'related_products' => $related_products
+            'related_products' => $related_products,
         ]);
     }
 
@@ -74,9 +74,40 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+
+        dd($request->input('product_id'));
+        $product = Product::find($request->input('product_id'));
+        if ($request->has('name')) {
+            $product->name = $request->input('name');
+        }
+        if ($request->has('location')) {
+            $product->location = $request->input('location');
+        }
+        if ($request->has('price')) {
+            $product->price = $request->input('price');
+        }
+        if ($request->has('quantity')) {
+            $product->quantity = $request->input('quantity');
+        }
+        if ($request->has('category_id')) {
+            $product->category_id = $request->input('category_id');
+        }
+        if ($request->has('description')) {
+            $product->description = $request->input('description');
+        }
+        if ($request->has('image')) {
+            $uploadedFile = $request->file('image');
+            $filename = time() . $uploadedFile->getClientOriginalName();
+            $request->file('image')->storeAs("public/uploads", $filename);
+            $product->image_url = "uploads/" . $filename;
+        }
+
+        $product->save();
+
+        return redirect()->back();
+
     }
 
     /**
