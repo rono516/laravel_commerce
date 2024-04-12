@@ -5,7 +5,8 @@
         <div class="container pt-4">
             <div class="row">
                 <div class="col-lg-12 new-product-form  col-md-12 col-12">
-                    <form class="form" method="PUT" action="{{ route('products.update') }}" enctype="multipart/form-data">
+                    <form class="form" method="POST" action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
+                       @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
@@ -14,7 +15,9 @@
                                         placeholder="Product Name">
                                 </div>
                             </div>
-                            <input name="product_id" value="{{ $product->id }}"  type="hidden">
+                            {{-- <input name="product_id" value="{{ $product->id }}"  type="hidden"> --}}
+                            {{-- <input type="hidden" name="_method" value="PUT"> --}}
+
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <input name="location" value="{{ $product->location }}"  type="text"

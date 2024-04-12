@@ -25,7 +25,7 @@ Route::get('/about_us', function () {
 
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::put('/products/update', [ProductController::class, 'update'])->name('products.update');
+Route::put('/products/update/{product}', [ProductController::class, 'update'])->name('products.update');
 
 Route::post('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
